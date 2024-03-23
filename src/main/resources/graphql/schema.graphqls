@@ -1,0 +1,31 @@
+type Query {
+  person: [Person]
+  personById(id:ID): Person
+  bookById(id: ID): Book
+  allBooks: [Book]
+  allAuthors: [Author]
+}
+
+type Mutation {
+  deleteBook(id: ID): String
+}
+
+type Book {
+  id: ID
+  name: String
+  pageCount: Int
+  author: Author
+}
+
+type Author {
+  id: ID
+  firstName: String
+  lastName: String
+}
+
+type Person {
+  id: ID
+  username: String
+  firstName: String
+  lastName: String
+}
