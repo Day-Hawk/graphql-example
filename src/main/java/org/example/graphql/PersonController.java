@@ -58,9 +58,15 @@ public final class PersonController {
   }
 
   @MutationMapping
-  public boolean deletePerson(@Argument final long id) {
+  public boolean deletePerson(@Argument final long id) throws NoDataPresentException {
+    //Error if person is not present.
+    if (!this.personRepository.existsById(id)) {
+      throw new NoDataPresentException("No person with id "+id+" present to delete.");
+    }
+
     this.personRepository.deleteById(id);
-    return true;
+    //Check with id.
+    return this.personRepository.existsById(id);
   }
 
 }
