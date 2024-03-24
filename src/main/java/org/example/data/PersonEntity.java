@@ -1,7 +1,11 @@
 package org.example.data;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import lombok.Getter;
@@ -18,7 +22,11 @@ import java.util.Objects;
 @Getter
 @NoArgsConstructor
 @Accessors(fluent=true)
-public final class PersonEntity extends AbstractEntity implements IPerson {
+public final class PersonEntity implements IPerson {
+
+  @Id
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
+  private Long id;
 
   @Column(name="username", nullable=false, unique=true)
   private String username;
@@ -35,5 +43,10 @@ public final class PersonEntity extends AbstractEntity implements IPerson {
     this.username = Objects.requireNonNull(username);
     this.firstName = Objects.requireNonNull(firstName);
     this.lastName = Objects.requireNonNull(lastName);
+  }
+
+  @Override
+  public long id() {
+    return this.id;
   }
 }

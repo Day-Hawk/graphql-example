@@ -1,22 +1,25 @@
 package org.example.graphql;
 
-import org.example.Author;
-import org.example.Book;
 import org.example.data.IPerson;
+import org.example.data.PersonEntity;
 import org.example.data.PersonRepository;
-import org.jetbrains.annotations.NotNull;
+import org.example.exception.DataAlreadyPresentException;
+import org.example.exception.NoDataPresentException;
+import org.jetbrains.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
-import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
+import java.util.regex.Matcher;
 
 
 @Controller
-public class PersonController {
+public final class PersonController {
 
   @Autowired
   private PersonRepository personRepository;
@@ -31,10 +34,33 @@ public class PersonController {
   }
 
   @QueryMapping
-  public IPerson personById(@Argument final long id) {
+  public IPerson personById(@Argument final long id) throws NoDataPresentException {
     return this.personRepository
         .findById(id)
-        .orElseThrow();
+        .orElseThrow(() -> new NoDataPresentException("No person with id "+id+" present!"));
+  }
+
+  @MutationMapping
+  public IPerson createPerson(@Argument @Nullable String username,
+                              @Argument @Nullable String firstName,
+                              @Argument @Nullable String lastName) throws DataAlreadyPresentException {
+    final PersonEntity personEntity = new PersonEntity(username, firstName, lastName);
+
+    //Already present
+    if (this.personRepository.exists(Example.of(personEntity, ExampleMatcher
+        .matching()
+        .withIgnorePaths("id")
+        .withIgnoreCase()))) {
+      throw new DataAlreadyPresentException("Person with parameters already present!");
+    }
+
+    return this.personRepository.save(personEntity);
+  }
+
+  @MutationMapping
+  public boolean deletePerson(@Argument final long id) {
+    this.personRepository.deleteById(id);
+    return true;
   }
 
 }
