@@ -44,6 +44,7 @@ public final class PersonController {
   public IPerson createPerson(@Argument @Nullable String username,
                               @Argument @Nullable String firstName,
                               @Argument @Nullable String lastName) throws DataAlreadyPresentException {
+    //Create entity from parameters
     final PersonEntity personEntity = new PersonEntity(username, firstName, lastName);
 
     //Already present
