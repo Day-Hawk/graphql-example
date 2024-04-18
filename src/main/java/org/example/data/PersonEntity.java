@@ -22,6 +22,7 @@ import java.util.Objects;
 @Getter
 @NoArgsConstructor
 @Accessors(fluent=true)
+
 public final class PersonEntity implements IPerson {
 
   @Id
