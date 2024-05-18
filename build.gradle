@@ -3,8 +3,8 @@ plugins {
   alias(libs.plugins.lombok)
 }
 
-group = 'org.example'
-version = '1.0-SNAPSHOT'
+group = 'dev.dotspace.dayhawk'
+version = '1.0.0'
 
 repositories {
   mavenCentral()
