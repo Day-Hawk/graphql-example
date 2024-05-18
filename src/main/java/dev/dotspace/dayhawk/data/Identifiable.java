@@ -1,4 +1,4 @@
-package org.example.data;
+package dev.dotspace.dayhawk.data;
 
 
 public interface Identifiable {

@@ -1,4 +1,4 @@
-package org.example.info;
+package dev.dotspace.dayhawk.info;
 
 import jakarta.annotation.PostConstruct;
 import lombok.extern.log4j.Log4j2;

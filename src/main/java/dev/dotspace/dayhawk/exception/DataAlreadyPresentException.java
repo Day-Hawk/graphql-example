@@ -1,4 +1,4 @@
-package org.example.exception;
+package dev.dotspace.dayhawk.exception;
 
 public final class DataAlreadyPresentException extends AbstractDataException {
   public DataAlreadyPresentException() {

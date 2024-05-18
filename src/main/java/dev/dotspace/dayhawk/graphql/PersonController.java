@@ -1,10 +1,10 @@
-package org.example.graphql;
+package dev.dotspace.dayhawk.graphql;
 
-import org.example.data.IPerson;
-import org.example.data.PersonEntity;
-import org.example.data.PersonRepository;
-import org.example.exception.DataAlreadyPresentException;
-import org.example.exception.NoDataPresentException;
+import dev.dotspace.dayhawk.data.PersonEntity;
+import dev.dotspace.dayhawk.data.PersonRepository;
+import dev.dotspace.dayhawk.exception.DataAlreadyPresentException;
+import dev.dotspace.dayhawk.exception.NoDataPresentException;
+import dev.dotspace.dayhawk.data.IPerson;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -15,7 +15,6 @@ import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
-import java.util.regex.Matcher;
 
 
 @Controller

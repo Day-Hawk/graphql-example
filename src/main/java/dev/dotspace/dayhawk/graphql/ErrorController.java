@@ -1,12 +1,11 @@
-package org.example.graphql;
+package dev.dotspace.dayhawk.graphql;
 
-import com.sun.tools.jconsole.JConsoleContext;
 import graphql.ErrorClassification;
 import graphql.GraphQLError;
 import graphql.GraphqlErrorBuilder;
 import graphql.schema.DataFetchingEnvironment;
-import org.example.exception.DataAlreadyPresentException;
-import org.example.exception.NoDataPresentException;
+import dev.dotspace.dayhawk.exception.DataAlreadyPresentException;
+import dev.dotspace.dayhawk.exception.NoDataPresentException;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.graphql.data.method.annotation.GraphQlExceptionHandler;
 import org.springframework.graphql.execution.ErrorType;

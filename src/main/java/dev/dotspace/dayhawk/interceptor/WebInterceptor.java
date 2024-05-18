@@ -1,4 +1,4 @@
-package org.example.interceptor;
+package dev.dotspace.dayhawk.interceptor;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;

@@ -1,7 +1,7 @@
-package org.example.config;
+package dev.dotspace.dayhawk.config;
 
 import lombok.extern.log4j.Log4j2;
-import org.example.interceptor.WebInterceptor;
+import dev.dotspace.dayhawk.interceptor.WebInterceptor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

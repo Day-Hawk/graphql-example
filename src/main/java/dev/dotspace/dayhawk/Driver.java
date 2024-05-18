@@ -1,4 +1,4 @@
-package org.example;
+package dev.dotspace.dayhawk;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
